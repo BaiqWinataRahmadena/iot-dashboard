@@ -23,8 +23,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        // Baris 28 Anda yang error ada di sini.
-        // Pastikan Anda menggunakan $this->faker->...
+        // Error Anda ada di sini. Kode ini sudah benar.
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
