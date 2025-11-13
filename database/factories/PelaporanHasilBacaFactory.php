@@ -5,10 +5,19 @@ namespace Database\Factories;
 use App\Models\Pelanggan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PelaporanHasilBaca>
+ */
 class PelaporanHasilBacaFactory extends Factory
 {
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
     public function definition(): array
     {
+        // Pastikan Anda menggunakan $this->faker
         return [
             'pelanggan_id' => Pelanggan::factory(),
             'vol_awal_1' => $this->faker->randomFloat(3, 100, 200),
