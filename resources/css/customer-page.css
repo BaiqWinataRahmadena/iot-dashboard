@@ -1,0 +1,131 @@
+/* resources/css/customer-page.css */
+.customer-layout {
+  display: flex;
+  gap: 2rem;
+  height: 75vh; /* Batasi tinggi agar tidak terlalu panjang */
+}
+
+/* Kolom Kiri: Daftar Pelanggan */
+.customer-list-container {
+  width: 40%;
+  flex-shrink: 0;
+  background-color: var(--sidebar-bg-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-list-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+  font-weight: 600;
+}
+
+.customer-list {
+  overflow-y: auto; /* Penting untuk scroll */
+  height: 100%;
+}
+
+.customer-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customer-list th,
+.customer-list td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.customer-list th {
+  background-color: #f9fafb;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  position: sticky; /* Header tabel tetap di atas saat scroll */
+  top: 0;
+}
+body.dark .customer-list th {
+    background-color: #374151;
+}
+
+.customer-list tbody tr {
+  cursor: pointer;
+}
+
+.customer-list tbody tr:hover {
+  background-color: rgba(66, 153, 225, 0.1);
+}
+
+.customer-list tbody tr.selected {
+  background-color: rgba(66, 153, 225, 0.2);
+}
+
+/* Kolom Kanan: Detail Pelanggan */
+.customer-detail-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.detail-card {
+  background-color: var(--sidebar-bg-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+#detail-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #718096;
+    border: 2px dashed var(--border-light);
+    border-radius: 8px;
+}
+
+.detail-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.75rem;
+}
+
+/* Peta */
+#map {
+  height: 300px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--border-light);
+}
+
+/* Daftar Pengecekan */
+.check-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.check-list th,
+.check-list td {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.check-list th {
+  text-align: left;
+  font-weight: 600;
+}
+.check-list tr:last-child td {
+  border-bottom: none;
+}
+.status-akurat {
+  color: #38a169;
+  font-weight: 600;
+}
+.status-tidak-akurat {
+  color: #e53e3e;
+  font-weight: 600;
+}
