@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         // 2. Data Dummy (HANYA JIKA ENVIRONMENT 'local')
         // Blok ini akan DILEWATI di Render (karena APP_ENV=production)
         // Jadi, UserFactory yang rusak itu tidak akan pernah dipanggil.
-        //if (App::environment('local')) {
+        if (App::environment('local')) {
 
             // Buat 10 User Karyawan dummy
             User::factory(10)->create();
@@ -38,6 +38,6 @@ class DatabaseSeeder extends Seeder
             Pelanggan::factory(30)
                     ->hasPelaporan(5)
                     ->create();
-        //}
+        }
     }
 }
