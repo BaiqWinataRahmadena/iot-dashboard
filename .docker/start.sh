@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e
 # Jalankan migrasi dan seeder
 # Variabel DATABASE_URL dll akan disuntikkan oleh Render
 echo "Running migrations and seeders..."
