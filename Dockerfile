@@ -9,7 +9,7 @@ RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoload
 # Kita TIDAK menggunakan --no-scripts, sehingga artisan package:discover berjalan di sini
 
 # --- Stage 2: Build aset Frontend (Vite/NPM) ---
-FROM node:20 AS node # <-- DIPERBARUI: Versi Node 18 ke 20
+FROM node:20 AS node 
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
