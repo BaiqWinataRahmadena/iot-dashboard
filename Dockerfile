@@ -26,8 +26,10 @@ RUN apk add --no-cache \
     zip \
     unzip \
     git \
-    pdo \
-    pdo_pgsql
+    postgresql-dev  # <-- Pustaka sistem yang diperlukan untuk pdo_pgsql
+
+# Instal ekstensi PHP (pdo dan pdo_pgsql) menggunakan helper Docker
+RUN docker-php-ext-install pdo pdo_pgsql
 
 # Salin file konfigurasi Nginx dari folder .docker
 COPY .docker/nginx.conf /etc/nginx/http.d/default.conf
