@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Pelanggan; // <-- GANTI DARI CUSTOMER
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\App;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,12 +19,15 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin123'),
         ]);
 
-        // 2. Buat 10 User Karyawan
-        User::factory(10)->create();
+        //if (App::environment('local')) {
+            
+            // Buat 10 User Karyawan dummy
+            User::factory(10)->create();
 
-        // 3. Buat 30 Pelanggan, masing-masing 5 data pelaporan
-        Pelanggan::factory(30)
-                 ->hasPelaporan(5) // <-- Panggil relasi 'pelaporan'
-                 ->create();
+            // Buat 30 Pelanggan dummy, masing-masing 5 data pelaporan
+            Pelanggan::factory(30)
+                    ->hasPelaporan(5)
+                    ->create();
+        //}
     }
 }
