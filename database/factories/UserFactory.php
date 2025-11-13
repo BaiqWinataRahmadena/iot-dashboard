@@ -12,18 +12,19 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * Kata sandi yang sedang digunakan oleh factory.
      */
     protected static ?string $password;
 
     /**
-     * Define the model's default state.
+     * Definisikan status default model.
      *
      * @return array<string, mixed>
      */
     public function definition(): array
     {
-        // Pastikan Anda menggunakan $this->faker, bukan fake()
+        // Baris 28 Anda yang error ada di sini.
+        // Pastikan Anda menggunakan $this->faker->...
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -34,7 +35,7 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * Menunjukkan bahwa alamat email model harus belum terverifikasi.
      */
     public function unverified(): static
     {

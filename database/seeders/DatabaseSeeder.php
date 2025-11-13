@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin123'),
         ]);
 
-        //if (App::environment('local')) {
+        if (App::environment('local')) {
             
             // Buat 10 User Karyawan dummy
             User::factory(10)->create();
@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
             Pelanggan::factory(30)
                     ->hasPelaporan(5)
                     ->create();
-        //}
+        }
     }
 }
