@@ -5,7 +5,7 @@ FROM composer:2 AS composer
 WORKDIR /app
 COPY database/ database/
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
 
 # --- Stage 2: Build aset Frontend (Vite/NPM) ---
 FROM node:18 AS node
@@ -42,6 +42,8 @@ COPY --from=node /app/public/build /var/www/html/public/build
 
 # Salin semua sisa kode aplikasi
 COPY . .
+
+RUN composer run-script post-autoload-dump --no-dev --optimize-autoloader
 
 # Salin skrip start dari folder .docker
 COPY .docker/start.sh /start.sh
