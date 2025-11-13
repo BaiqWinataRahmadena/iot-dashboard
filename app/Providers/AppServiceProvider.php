@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Http\Request; // <-- Pastikan ini ada
+use Illuminate\Support\Facades\URL; // <-- TAMBAHKAN BARIS INI
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,15 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // MEMPERCAYAI PROXY RENDER (Versi yang sudah diperbaiki)
-        // Kita hapus HEADER_X_FORWARDED_TLS yang error
-        Request::setTrustedProxies(
-            ['*'], // Percayai semua proxy
-            Request::HEADER_X_FORWARDED_FOR |
-            Request::HEADER_X_FORWARDED_HOST |
-            Request::HEADER_X_FORWARDED_PORT |
-            Request::HEADER_X_FORWARDED_PROTO |
-            Request::HEADER_X_FORWARDED_PREFIX
-        );
+        // PAKSA LARAVEL UNTUK MENGGUNAKAN HTTPS UNTUK SEMUA ASET
+        // Ini akan memperbaiki error "Mixed Content" di Render
+        
+        // Kita cek apakah env di set ke 'production' (seperti di Render)
+        if (config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
     }
 }
